@@ -43,7 +43,7 @@ cd arcana
 ```bash
 cd backend
 pip install flask flask-cors
-python app.py
+python main.py
 ```
 
 Make sure the Flask server is running on `http://127.0.0.1:5050`.
@@ -85,7 +85,7 @@ Returns a JSON response with a random tarot reading of 1 to 5 cards.
 ```
 arcana/
 ├── backend/
-│   └── app.py           # Flask backend
+│   └── main.py           # Flask backend
 ├── frontend/
 │   ├── components/      # UI components
 │   ├── app/             # Next.js pages
