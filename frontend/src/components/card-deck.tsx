@@ -54,9 +54,18 @@ export function CardDeck() {
         ))}
       </div>
 
-      <Button onClick={fetchCards} className="italic font-medium cursor-pointer">
+      <Button
+        onClick={fetchCards}
+        className="italic font-medium cursor-pointer rounded-full px-6 py-2 text-white dark:text-black
+            bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 from-neutral-700 to-neutral-900 
+            border dark:border-black/10 border-white/10 shadow-md hover:brightness-110 
+            relative overflow-hidden before:absolute before:inset-0 
+            before:dark:bg-white/40 before:bg-white/10 before:rounded-full 
+            before:blur-sm before:opacity-30 transition-all duration-500"
+      >
         Give me a reading
       </Button>
+
     </div>
   )
 }
