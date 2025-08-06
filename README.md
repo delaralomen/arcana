@@ -96,9 +96,6 @@ arcana/
 
 ## 🎨 Screenshots
 
-*Optional: Add screenshots or gifs of the UI here*
-
-
 ### Light Mode
 ![Light Mode](./frontend/public/screenshots/light-mode.png)
 
