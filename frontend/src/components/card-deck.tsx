@@ -14,6 +14,7 @@ type TarotCard = {
 
 export function CardDeck() {
   const [cards, setCards] = useState<TarotCard[]>([])
+  const [interpretation, setInterpretation] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const fetchCards = async () => {
@@ -29,8 +30,36 @@ export function CardDeck() {
     }
   }
 
+  const interpretCards = async () => {
+  if (cards.length === 0) return
+
+  setLoading(true)
+  try {
+    const res = await fetch("http://127.0.0.1:5050/api/interpret", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        session_id: "user123", // optional, for memory
+        cards,
+      }),
+    })
+
+    const data = await res.json()
+    if (data.interpretation) {
+      setInterpretation(data.interpretation)
+    }
+  } catch (err) {
+    console.error("Failed to interpret cards", err)
+  } finally {
+    setLoading(false)
+  }
+}
+
+
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center gap-4">
         <div className="flex flex-wrap justify-center gap-4 max-w-5xl min-h-[64px] mb-8">
         {cards.map((card, index) => (
             <Card key={index} className="border-black shadow-lg hover:shadow-xl transition-all flex flex-col items-center justify-center text-center">
@@ -53,7 +82,26 @@ export function CardDeck() {
         Give me a reading
       </Button>
 
+      {cards.length > 0 && (
+        <Button
+            onClick={interpretCards}
+            className="italic font-medium cursor-pointer rounded-full px-6 py-2 text-white dark:text-black
+                bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 from-neutral-700 to-neutral-900 
+                border dark:border-black/10 border-white/10 shadow-md hover:brightness-110 
+                relative overflow-hidden before:absolute before:inset-0 
+                before:dark:bg-white/40 before:bg-white/10 before:rounded-full 
+                before:blur-sm before:opacity-30 transition-all duration-500"
+        >
+            Interpret my cards
+        </Button>
+      )}
 
+
+      {interpretation && (
+        <div className="max-w-2xl text-sm text-center text-muted-foreground px-4 mt-4 whitespace-pre-line">
+            {interpretation}
+        </div>
+      )}
     </div>
   )
 }
