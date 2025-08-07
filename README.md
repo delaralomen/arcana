@@ -1,7 +1,4 @@
-# 🔮 Arcana — Tarot Card Reading Generator & Interpreter
-
-A very simple Tarot card reading app built with **Next.js**, **Tailwind CSS**, and **Flask**. Draw cards from a virtual deck and receive randomized readings.
-
+# 🔮 Arcana — Tarot Card Generator & Interpreter
 
 Arcana is a simple tarot card reading web app built with Next.js and Flask. It lets users pull tarot cards, ask personalized questions, and receive interpretations using Anthropic's *Sonnet 3.5* model. The interface includes a clean design, dynamic card rendering with emoji suits, and full light/dark theme support.
 
