@@ -51,12 +51,12 @@ def draw_tarot():
     })
 
 
-
 @app.route("/api/interpret", methods=["POST"])
 def interpret_cards():
     data = request.get_json()
     cards = data.get("cards")
     session_id = data.get("session_id") or "default"
+    prompt = data.get("prompt", "").strip()
 
     if not cards:
         return jsonify({"error": "No cards provided"}), 400
@@ -65,10 +65,17 @@ def interpret_cards():
         [f"- {card['card']} ({card['orientation']})" for card in cards]
     )
 
-    user_input = f"Please interpret the following tarot reading:\n{formatted_cards}"
+    user_message = "Please interpret the following tarot reading:\n"
+
+    if prompt:
+        user_message += f"\n\nThe user asked: \"{prompt}\" and these are the cards they pulled:\n"
+    
+    user_message += formatted_cards
+    
+    print(user_message)
 
     messages = conversations.get(session_id, [])
-    messages.append({"role": "user", "content": user_input})
+    messages.append({"role": "user", "content": user_message})
 
     try:
         response = anthropic.messages.create(
@@ -81,7 +88,6 @@ def interpret_cards():
         reply = response.content[0].text
         messages.append({"role": "assistant", "content": reply})
 
-        # Save updated conversation
         conversations[session_id] = messages
 
         return jsonify({"interpretation": reply})

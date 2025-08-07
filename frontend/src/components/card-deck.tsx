@@ -15,6 +15,7 @@ type TarotCard = {
 export function CardDeck() {
   const [cards, setCards] = useState<TarotCard[]>([])
   const [interpretation, setInterpretation] = useState<string | null>(null)
+  const [userInput, setUserInput] = useState("")
   const [loading, setLoading] = useState(false)
 
   const fetchCards = async () => {
@@ -41,9 +42,9 @@ export function CardDeck() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        session_id: "user123", // optional, for memory
         cards,
-      }),
+        prompt: userInput,
+        }),
     })
 
     const data = await res.json()
@@ -69,7 +70,13 @@ export function CardDeck() {
             </Card>
         ))}
       </div>
-
+      <textarea
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
+        placeholder="What would you like to ask?"
+        className="w-full max-w-xl p-3 border border-muted rounded-md bg-background text-foreground text-sm shadow-sm"
+        rows={3}
+      />
       <Button
         onClick={fetchCards}
         className="italic font-medium cursor-pointer rounded-full px-6 py-2 text-white dark:text-black
@@ -79,7 +86,7 @@ export function CardDeck() {
             before:dark:bg-white/40 before:bg-white/10 before:rounded-full 
             before:blur-sm before:opacity-30 transition-all duration-500"
       >
-        Give me a reading
+        Pull some cards
       </Button>
 
       {cards.length > 0 && (
@@ -92,7 +99,7 @@ export function CardDeck() {
                 before:dark:bg-white/40 before:bg-white/10 before:rounded-full 
                 before:blur-sm before:opacity-30 transition-all duration-500"
         >
-            Interpret my cards
+            Interpret, please
         </Button>
       )}
 
