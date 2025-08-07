@@ -61,15 +61,6 @@ export function CardDeck() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-4 max-w-5xl min-h-[64px] mb-8">
-        {cards.map((card, index) => (
-            <Card key={index} className="border-black shadow-lg hover:shadow-xl transition-all flex flex-col items-center justify-center text-center">
-                <div className="text-3xl mb-1">{getCardEmoji(card.card)}</div>
-                <div className="text-xs text-center">{card.card}</div>
-                <p className="text-xs italic text-muted-foreground">{card.orientation}</p>
-            </Card>
-        ))}
-      </div>
       <textarea
         value={userInput}
         onChange={(e) => setUserInput(e.target.value)}
@@ -88,6 +79,18 @@ export function CardDeck() {
       >
         Pull some cards
       </Button>
+
+
+        <div className="flex flex-wrap justify-center gap-4 max-w-5xl min-h-[64px] mb-8">
+        {cards.map((card, index) => (
+            <Card key={index} className="border-black shadow-lg hover:shadow-xl transition-all flex flex-col items-center justify-center text-center">
+                <div className="text-3xl mb-1">{getCardEmoji(card.card)}</div>
+                <div className="text-xs text-center">{card.card}</div>
+                <p className="text-xs italic text-muted-foreground">{card.orientation}</p>
+            </Card>
+        ))}
+      </div>
+
 
       {cards.length > 0 && (
         <Button
