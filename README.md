@@ -132,7 +132,11 @@ arcana/
 
 ## 🤝 Credits
 
+
+
 Inspired by mysticism. Crafted with code.
+This project was built in 24 hours with the help of v0 and ChatGPT.
+
 UI components powered by [shadcn/ui](https://ui.shadcn.com)
 
 
