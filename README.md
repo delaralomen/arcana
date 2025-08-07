@@ -90,7 +90,7 @@ Payload:
 
 `POST /api/interpret`
 
-Takes a user prompt + set of drawn cards and returns an interpretation using Anthropic API.
+Takes a user prompt + a set of cards and returns an interpretation using Anthropic API.
 
 Payload:
 
@@ -130,9 +130,15 @@ arcana/
 
 ---
 
+## ✅ Todos
+
+* [ ] Add animation when cards are drawn
+* [ ] Improve layout throughout the different steps
+* [ ] Add persistent session support (e.g. Redis or SQLite)
+
+---
+
 ## 🤝 Credits
-
-
 
 Inspired by mysticism. Crafted with code.
 This project was built in 24 hours with the help of v0 and ChatGPT.
