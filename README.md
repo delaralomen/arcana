@@ -6,10 +6,10 @@ Arcana is a simple tarot card reading web app built with Next.js and Flask. It l
 
 ## ✨ Features
 
-* 🎴 Draw 1–5 random tarot cards (Major + Minor Arcana)
 * 💬 Ask a personal question to guide the reading
-* 🤖 Receive an AI-generated interpretation (Anthropic, Sonnet 3.5)
-* 💡 Beautiful light/dark mode with animated transitions
+* 🎴 Draw 1–5 random tarot cards (Major + Minor Arcana)
+* 🤖 Receive an AI-generated interpretation
+* 💡 Light & dark mode with animated transitions
 * 🌈 Glossy animated buttons and emoji-enhanced cards
 * 📚 Session memory support for multi-step readings
 
@@ -29,7 +29,7 @@ Arcana is a simple tarot card reading web app built with Next.js and Flask. It l
 ### Backend
 
 * **Flask** API for `/draw` and `/interpret` endpoints
-* **Anthropic API** integration
+* **Anthropic API** integration (Sonnet 3.5)
 * **In-memory conversation history**
 
 ---
@@ -43,29 +43,30 @@ git clone https://github.com/delaralomen/arcana.git
 cd arcana
 ```
 
----
+### 2. Install dependencies
 
-### 2. Backend setup (Flask)
+```bash
+npm install  # frontend
+pip install -r backend/requirements.txt  # backend
+```
+
+### 3. Start the backend (Flask)
 
 ```bash
 cd backend
-pip install flask flask-cors
-python main.py
+export ANTHROPIC_API_KEY=*your_key_here*
+python app.py
 ```
 
-Make sure the Flask server is running on `http://127.0.0.1:5050`.
-
----
-
-### 3. Frontend setup (Next.js)
+### 4. Start the frontend (Next.js)
 
 ```bash
-cd frontend
-npm install
 npm run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+By default, the frontend will fetch from `http://127.0.0.1:5050/api`.
 
 ---
 
