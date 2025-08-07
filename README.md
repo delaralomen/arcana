@@ -2,28 +2,38 @@
 
 A very simple Tarot card reading app built with **Next.js**, **Tailwind CSS**, and **Flask**. Draw cards from a virtual deck and receive randomized readings.
 
+
+Arcana is a simple tarot card reading web app built with Next.js and Flask. It lets users pull tarot cards, ask personalized questions, and receive interpretations using Anthropic's *Sonnet 3.5* model. The interface includes a clean design, dynamic card rendering with emoji suits, and full light/dark theme support.
+
 ---
 
 ## ✨ Features
 
-- Draw 1–5 random tarot cards from a full 78-card deck
-- Each card includes an **orientation** (Upright or Reversed)
-- Emoji representations for suits:
-  - 🍵 Cups
-  - 💵 Pentacles
-  - ⚔️ Swords
-  - 🪄 Wands
-- Dark/light mode with animated theme switching
-- Responsive design with ShadCN + Tailwind
+* 🎴 Draw 1–5 random tarot cards (Major + Minor Arcana)
+* 💬 Ask a personal question to guide the reading
+* 🤖 Receive an AI-generated interpretation (Anthropic, Sonnet 3.5)
+* 💡 Beautiful light/dark mode with animated transitions
+* 🌈 Glossy animated buttons and emoji-enhanced cards
+* 📚 Session memory support for multi-step readings
+
 
 ---
 
 ## 🧱 Tech Stack
 
-- **Frontend:** Next.js (App Router), Tailwind CSS, ShadCN UI
-- **Backend:** Flask (Python)
-- **Styling:** CSS transitions, dark mode support
-- **UI Effects:** Glossy button, smooth theme toggling
+### Frontend
+
+* **Next.js (App Router)**
+* **React (Client Components)**
+* **Tailwind CSS** for styling
+* **Lucide Icons** + emojis for card symbols
+* **Light/Dark Mode** with `next-themes`
+
+### Backend
+
+* **Flask** API for `/draw` and `/interpret` endpoints
+* **Anthropic API** integration
+* **In-memory conversation history**
 
 ---
 
@@ -34,7 +44,7 @@ A very simple Tarot card reading app built with **Next.js**, **Tailwind CSS**, a
 ```bash
 git clone https://github.com/delaralomen/arcana.git
 cd arcana
-````
+```
 
 ---
 
@@ -62,11 +72,13 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🧪 API
+## 🧪 API Endpoints
 
-**Endpoint:** `GET /api/draw`
+`GET /api/draw`
+
 Returns a JSON response with a random tarot reading of 1 to 5 cards.
 
+Payload:
 ```json
 {
   "num_cards": 3,
@@ -78,18 +90,34 @@ Returns a JSON response with a random tarot reading of 1 to 5 cards.
 }
 ```
 
+`POST /api/interpret`
+
+Takes a user prompt + set of drawn cards and returns an interpretation using Anthropic API.
+
+Payload:
+
+```json
+{
+  "prompt": "What should I focus on today?",
+  "cards": [
+    { "card": "The Empress", "orientation": "Upright" },
+    { "card": "2 of Cups", "orientation": "Reversed" }
+  ]
+}
+```
+
+
 ---
 
 ## 📁 Project Structure
 
 ```
 arcana/
-├── backend/
-│   └── main.py           # Flask backend
-├── frontend/
-│   ├── components/      # UI components
-│   ├── app/             # Next.js pages
-│   └── tailwind.config.js
+├── backend/              # Flask server
+│   └── main.py
+├── frontend/             # Next.js frontend
+│   ├── app/              # App Router structure
+│   ├── components/       # UI and utility components
 ```
 
 ---
