@@ -1,4 +1,4 @@
-# 🔮 Arcana — Tarot Card Reading Generator
+# 🔮 Arcana — Tarot Card Reading Generator & Interpreter
 
 A very simple Tarot card reading app built with **Next.js**, **Tailwind CSS**, and **Flask**. Draw cards from a virtual deck and receive randomized readings.
 
@@ -32,7 +32,7 @@ A very simple Tarot card reading app built with **Next.js**, **Tailwind CSS**, a
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/arcana.git
+git clone https://github.com/delaralomen/arcana.git
 cd arcana
 ````
 

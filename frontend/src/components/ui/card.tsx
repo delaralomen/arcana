@@ -1,16 +1,20 @@
 import * as React from "react"
-
+import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
+  const { resolvedTheme } = useTheme()
+  const borderColor = resolvedTheme === "dark" ? "#303030" : "#f0f0f0"
+
   return (
     <div
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl w-48 h-64 p-6 shadow-sm",
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl w-48 h-64 p-6 shadow-sm border",
         className
       )}
+      style={{ borderColor }}
       {...props}
     />
   )

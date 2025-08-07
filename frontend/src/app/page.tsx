@@ -17,8 +17,7 @@ export default function CardGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-background transition-colors">
-      {/* Header with theme toggle */}
+    <div className="min-h-screen bg-background transition-colors flex flex-col">
       <div className="relative p-6">
         {/* <h1 className="text-2xl font-bold text-center">Arcana</h1> */}
         <div className="absolute top-6 right-6">
@@ -26,7 +25,7 @@ export default function CardGenerator() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center px-6 py-12">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         <CardDeck />
       </div>
     </div>

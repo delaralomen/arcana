@@ -31,20 +31,7 @@ export function CardDeck() {
 
   return (
     <div className="flex flex-col items-center">
-        <div className="flex flex-wrap justify-center gap-4 max-w-4xl min-h-[33rem] mb-8">
-
-        {/* {cards.map((card, index) => (
-          <Card
-            key={index}
-            className="border-black shadow-lg hover:shadow-xl transition-all flex flex-col items-center justify-center text-center"
-            >
-            <div className="w-20 h-24 mb-2 bg-muted rounded-sm flex items-center justify-center text-xs">
-                {card.card}
-            </div>
-            <p className="text-xs italic text-muted-foreground">{card.orientation}</p>
-          </Card>
-
-        ))} */}
+        <div className="flex flex-wrap justify-center gap-4 max-w-5xl min-h-[64px] mb-8">
         {cards.map((card, index) => (
             <Card key={index} className="border-black shadow-lg hover:shadow-xl transition-all flex flex-col items-center justify-center text-center">
                 <div className="text-3xl mb-1">{getCardEmoji(card.card)}</div>
@@ -65,6 +52,7 @@ export function CardDeck() {
       >
         Give me a reading
       </Button>
+
 
     </div>
   )
